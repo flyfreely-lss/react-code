@@ -24,3 +24,15 @@ export const VisibilityFilters = {
     SHOW_COMPLETED: 'SHOW_COMPLETED',
     SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
+
+// redux-thunk: dispatch a function, which is called
+// and given dispatch and getState as parameters
+// function thunkActionCreator(someValue) {
+//     return (dispatch, getState) => {
+//         dispatch({type : "REQUEST_STARTED"});
+
+//         myAjaxLib.post("/someEndpoint", {data : someValue})
+//         .then(response => dispatch({type : "REQUEST_SUCCEEDED", payload : response}))
+//         .catch(error => dispatch({type : "REQUEST_FAILED", error : error}));
+//     };
+// }
