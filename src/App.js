@@ -1,26 +1,32 @@
 import { BrowserRouter as Router } from 'react-router-dom'
 // import { createBrowserHistory } from 'history';
+import { Provider } from 'react-redux'
 import './assets/css/App.css';
 import StateComponent from './components/StateComponent'
 import ReducerComponent from './components/ReducerComponent'
 import RouterComponent from './components/RouterComponent'
-import Todos from './components/todos/components/App'
+import store from './store'
+// import Todos from './components/todos/components/App'
+import ReduxAsyncComponent from './components/ReduxAsyncComponent'
 
 // const history = createBrowserHistory();
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <StateComponent initialCount={0} />
-        <ReducerComponent initialCount={100} />
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <StateComponent />
+          <ReducerComponent />
+          <RouterComponent />
 
-        <RouterComponent />
+          {/* Redux 示例：Todo列表 */}
+          {/* <Todos /> */}
 
-        {/* Redux 示例：Todo列表 */}
-        <Todos />
-      </div>
-    </Router>
+          <ReduxAsyncComponent />
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
