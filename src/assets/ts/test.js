@@ -1,0 +1,2 @@
+var val;
+val = true;

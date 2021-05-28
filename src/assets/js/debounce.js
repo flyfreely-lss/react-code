@@ -17,22 +17,31 @@ function debounce(func, delay){
 // 函数节流
 // 原理：函数在指定时间内多次点击，最终只执行一次
 // 使用场景：1、鼠标不断点击 2、拖拽 3、缩放：监控浏览器resize
-function throttle(func, delay) {
+// 方式-：使用时间戳实现
+function throttle1(func, wait) {
+    let previousTime = 0;
+    return function() {
+        const context = this;
+        const args = arguments;
+        const now = +new Date()
+        if(wait < now - previousTime){
+            previousTime = now;
+            func.apply(context, args);
+        }
+    }
+}
+
+// 方式二：使用定时器实现
+function throttle2(func, wait) {
     let timerId;
     return function() {
-        let context = this;
-        let args = arguments;
-        let now = +new Date();
-        let lastTime;
-        if(now < lastTime + delay) {
-            clearTimeout(timerId);
+        const context = this;
+        const args = arguments;
+        if(!timerId) {
             timerId = setTimeout(() => {
-                lastTime = now;
-                func.apply(context, args);
-            }, delay)
-        }else{
-            lastTime = now;
-            func.apply(context, args);
+                timerId = null
+                func.apply(context, args)
+            }, wait)
         }
     }
 }
