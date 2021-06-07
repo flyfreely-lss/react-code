@@ -1,4 +1,5 @@
 // TypeScript 是面向对象的 JavaScript。
+// 重点：泛型 
 
 var val:string[]|number[];
 val=[]
